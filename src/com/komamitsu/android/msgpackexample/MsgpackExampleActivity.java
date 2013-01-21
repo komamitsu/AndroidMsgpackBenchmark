@@ -132,7 +132,7 @@ public class MsgpackExampleActivity extends Activity {
 
     logStart(methodName, TYPE_DESERIALIZE);
     JSONArray jsonArray = new JSONArray(jsonString);
-    List<String> dst = new ArrayList();
+    List<String> dst = new ArrayList<String>();
     for (int i = 0; i < jsonArray.length(); i++) {
       dst.add(jsonArray.getString(i));
     }

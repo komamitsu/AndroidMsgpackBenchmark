@@ -16,8 +16,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.msgpack.MessagePack;
-import org.msgpack.type.Value;
-import org.msgpack.unpacker.Converter;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -101,8 +99,7 @@ public class MsgpackExampleActivity extends Activity {
     logEnd(methodName, TYPE_SERIALIZE);
 
     logStart(methodName, TYPE_DESERIALIZE);
-    Value dynamic = msgpack.read(raw);
-    List<String> dst = new Converter(dynamic).read(tList(TString));
+    List<String> dst = msgpack.read(raw, tList(TString));
     logEnd(methodName, TYPE_DESERIALIZE);
   }
 
@@ -117,8 +114,7 @@ public class MsgpackExampleActivity extends Activity {
     logEnd(methodName, TYPE_SERIALIZE);
 
     logStart(methodName, TYPE_DESERIALIZE);
-    Value dynamic = msgpack.read(raw);
-    Map<String, String> dst = new Converter(dynamic).read(tMap(TString, TString));
+    Map<String, String> dst = msgpack.read(raw, tMap(TString, TString));
     logEnd(methodName, TYPE_DESERIALIZE);
   }
 
